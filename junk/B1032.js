@@ -4,7 +4,7 @@ context.txt`;
 
 const inputStr = () => {
   return input;
-  // return require("fs").readFileSync("/dev/stdin").toString().trin();
+  // return require("fs").readFileSync("/dev/stdin").toString().trim();
 };
 
 const sol = () => {
@@ -26,15 +26,10 @@ const solWithArr = () => {
     .split("\n")
     .slice(1)
     .map((filename) => filename.split(""))
-    .reduce(
-      (preArr, curArr) =>
-        curArr.map((_, i) => [
-          preArr[i] ? (curArr[i] == preArr[i] ? curArr[i] : "?") : curArr[i],
-        ]),
-      []
+    .reduce((preStr, curStr) =>
+      curStr.map((char, i) => (char == preStr[i] ? char : "?"))
     )
     .join("");
 };
 
-console.log(sol());
 console.log(solWithArr());
