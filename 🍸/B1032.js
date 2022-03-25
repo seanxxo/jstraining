@@ -7,6 +7,7 @@ const inputStr = () => {
   // return require("fs").readFileSync("/dev/stdin").toString().trim();
 };
 
+// String의 한계... Array.map을 대체할 것이 없고 charAt이 못생겼음
 const sol = () => {
   return inputStr()
     .split("\n")
@@ -25,7 +26,7 @@ const solWithArr = () => {
   return inputStr()
     .split("\n")
     .slice(1)
-    .map((filename) => filename.split(""))
+    .map((filename) => [...filename])
     .reduce((preStr, curStr) =>
       curStr.map((char, i) => (char == preStr[i] ? char : "?"))
     )
